@@ -11,32 +11,68 @@
  * NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+package com.qualcomm.dcp;
 
-buildscript {
-    ext.kotlin_version = '1.3.41'
-    repositories {
-        jcenter()
-        google()
+import android.util.Log;
+
+import androidx.test.rule.UiThreadTestRule;
+
+import org.junit.runner.Description;
+import org.junit.runners.model.Statement;
+
+import java.io.IOException;
+
+import okhttp3.mockwebserver.MockWebServer;
+
+
+/**
+ * JUnit  rule that starts and stops a mock web server for test runner
+ */
+public class MockServerRule extends UiThreadTestRule {
+
+    private MockWebServer mServer;
+
+    private static final int MOCK_WEBSERVER_PORT = 8000;
+
+    @Override
+    public Statement apply(final Statement base, Description description) {
+        return new Statement() {
+            @Override
+            public void evaluate() throws Throwable {
+                startServer();
+                try {
+                    base.evaluate();
+                } finally {
+                    stopServer();
+                }
+            }
+        };
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+    /**
+     * Returns the started web server instance
+     *
+     * @return mock server
+     */
+    MockWebServer server() {
+        return mServer;
     }
-}
 
-allprojects {
-    repositories {
-        jcenter()
-        maven { url "https://jitpack.io" }
-        mavenCentral()
-        google()
+    private void startServer() {
+        mServer = new MockWebServer();
+        try {
+            mServer.start(MOCK_WEBSERVER_PORT);
+        } catch (IOException e) {
+            throw new IllegalStateException("mock server start issue", e);
+        }
     }
-}
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+    void stopServer() {
+        try {
+            mServer.shutdown();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("servererror", "");
+        }
+    }
 }

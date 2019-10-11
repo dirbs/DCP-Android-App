@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2018-2019 Qualcomm Technologies, Inc.
+  ~ All rights reserved.
+  ~ Redistribution and use in source and binary forms, with or without modification, are permitted (subject to the limitations in the disclaimer below) provided that the following conditions are met:
+  ~ * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  ~ * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  ~ * Neither the name of Qualcomm Technologies, Inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+  ~ * The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment is required by displaying the trademark/log as per the details provided here: [https://www.qualcomm.com/documents/dirbs-logo-and-brand-guidelines]
+  ~ * Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
+  ~ * This notice may not be removed or altered from any source distribution.
+  ~ NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_new_device"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".counterfeit.view.CounterfeitActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:layout_alignParentTop="true"/>
+    <RelativeLayout
+        android:id="@+id/title_con"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:id="@+id/ic_instructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_report_device"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="@string/info" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/ic_instructions"
+            android:text="@string/report_device"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@+id/ic_instructions" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_con"
+        android:layout_alignParentLeft="true"
+        android:fillViewport="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|start"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="top|start"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/brand_til"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:id="@+id/brand"
+                        android:layout_width="match_parent"
+                        android:hint="@string/enter_device_name"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:paddingRight="60dp"
+                        android:paddingEnd="60dp"
+                        tools:ignore="RtlSymmetry"
+                        android:importantForAutofill="no" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <ImageButton
+                    android:id="@+id/openBrandInfo"
+                    style="?android:buttonBarButtonStyle"
+                    android:layout_width="60dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="2dp"
+                    android:contentDescription="@string/info"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_info"
+                    app:layout_constraintEnd_toEndOf="@+id/brand_til"
+                    app:layout_constraintRight_toRightOf="@+id/brand_til"
+                    app:layout_constraintTop_toTopOf="@+id/brand_til"
+                    app:layout_constraintBottom_toBottomOf="@+id/brand_til" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/model_til"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/brand_til">
+
+                    <EditText
+                        android:id="@+id/model"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/enter_device_model"
+                        android:inputType="text"
+                        android:paddingRight="60dp"
+                        android:paddingEnd="60dp"
+                        tools:ignore="RtlSymmetry"
+                        android:importantForAutofill="no" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <ImageButton
+                    android:id="@+id/openModelInfo"
+                    style="?android:buttonBarButtonStyle"
+                    android:layout_width="60dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="2dp"
+                    android:contentDescription="@string/info"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_info"
+                    app:layout_constraintEnd_toEndOf="@+id/model_til"
+                    app:layout_constraintRight_toRightOf="@+id/model_til"
+                    app:layout_constraintTop_toTopOf="@+id/model_til"
+                    app:layout_constraintBottom_toBottomOf="@+id/model_til" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/store_name_til"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/model_til">
+
+                    <EditText
+                        android:id="@+id/store_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/store_name"
+                        android:inputType="text"
+                        android:paddingRight="60dp"
+                        android:paddingEnd="60dp"
+                        tools:ignore="RtlSymmetry"
+                        android:importantForAutofill="no" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <ImageButton
+                    android:id="@+id/openStoreInfo"
+                    style="?android:buttonBarButtonStyle"
+                    android:layout_width="60dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="2dp"
+                    android:contentDescription="@string/info"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_info"
+                    app:layout_constraintEnd_toEndOf="@+id/store_name_til"
+                    app:layout_constraintRight_toRightOf="@+id/store_name_til"
+                    app:layout_constraintTop_toTopOf="@+id/store_name_til"
+                    app:layout_constraintBottom_toBottomOf="@+id/store_name_til" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/address_til"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/store_name_til">
+
+                    <EditText
+                        android:id="@+id/address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/address"
+                        android:inputType="text"
+                        android:paddingRight="60dp"
+                        android:paddingEnd="60dp"
+                        tools:ignore="RtlSymmetry"
+                        android:importantForAutofill="no" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:id="@+id/openAddressInfo"
+                    style="?android:buttonBarButtonStyle"
+                    android:layout_width="60dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="2dp"
+                    android:contentDescription="@string/info"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_info"
+                    app:layout_constraintEnd_toEndOf="@+id/address_til"
+                    app:layout_constraintRight_toRightOf="@+id/address_til"
+                    app:layout_constraintTop_toTopOf="@+id/address_til"
+                    app:layout_constraintBottom_toBottomOf="@+id/address_til" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/description_til"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/address_til">
+
+                    <EditText
+                        android:id="@+id/description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/description"
+                        android:inputType="text"
+                        android:paddingRight="60dp"
+                        android:paddingEnd="60dp"
+                        tools:ignore="RtlSymmetry"
+                        android:importantForAutofill="no" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:id="@+id/openDescrptionInfo"
+                    style="?android:buttonBarButtonStyle"
+                    android:layout_width="60dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="2dp"
+                    android:contentDescription="@string/info"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_info"
+                    app:layout_constraintEnd_toEndOf="@+id/description_til"
+                    app:layout_constraintRight_toRightOf="@+id/description_til"
+                    app:layout_constraintTop_toTopOf="@+id/description_til"
+                    app:layout_constraintBottom_toBottomOf="@+id/description_til" />
+
+                <TextView
+                    android:id="@+id/images_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/device_images"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/text_color_dark"
+                    app:layout_constraintLeft_toLeftOf="@+id/description_til"
+                    app:layout_constraintTop_toBottomOf="@+id/description_til"
+                    android:layout_marginStart="5dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/img_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:backgroundTint="#fff"
+                    android:text="@string/select_image"
+                    android:textColor="@color/button_color"
+                    app:layout_constraintLeft_toLeftOf="@+id/images_txt"
+                    app:layout_constraintTop_toBottomOf="@+id/images_txt"
+                    tools:targetApi="lollipop"
+                    android:layout_marginStart="5dp" />
+
+                <ImageButton
+                    android:id="@+id/openImagesInfo"
+                    style="?android:buttonBarButtonStyle"
+                    android:layout_width="60dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="2dp"
+                    android:contentDescription="@string/info"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_info"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/img_text"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_text" />
+
+                <HorizontalScrollView
+                    android:id="@+id/img_con"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="@+id/img_text"
+                    app:layout_constraintTop_toBottomOf="@+id/img_text">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:id="@+id/img_one_con"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:id="@+id/device_img"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="8dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/no_img" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/device_img_remove"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignTop="@+id/device_img"
+                                android:layout_alignRight="@+id/device_img"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="5dp"
+                                android:background="#53000000"
+                                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                                android:visibility="gone"
+                                android:layout_alignEnd="@+id/device_img"
+                                android:layout_marginEnd="5dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/img_two_con"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:id="@+id/device_img1"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="8dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/no_img"
+                                android:visibility="visible" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/device_img1_remove"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignTop="@+id/device_img1"
+                                android:layout_alignRight="@+id/device_img1"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="5dp"
+                                android:background="#53000000"
+                                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                                android:visibility="gone"
+                                android:layout_alignEnd="@+id/device_img1"
+                                android:layout_marginEnd="5dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/img_three_con"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:id="@+id/device_img2"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="8dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/no_img"
+                                android:visibility="visible" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/device_img2_remove"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignTop="@+id/device_img2"
+                                android:layout_alignRight="@+id/device_img2"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="5dp"
+                                android:background="#53000000"
+                                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                                android:visibility="gone"
+                                android:layout_alignEnd="@+id/device_img2"
+                                android:layout_marginEnd="5dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/img_four_con"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:id="@+id/device_img3"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="8dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/no_img"
+                                android:visibility="visible" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/device_img3_remove"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignTop="@+id/device_img3"
+                                android:layout_alignRight="@+id/device_img3"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="5dp"
+                                android:background="#53000000"
+                                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                                android:visibility="gone"
+                                android:layout_alignEnd="@+id/device_img3"
+                                android:layout_marginEnd="5dp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/img_five_con"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginEnd="10dp">
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:id="@+id/device_img4"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="8dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/no_img"
+                                android:visibility="visible" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/device_img4_remove"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignTop="@+id/device_img4"
+                                android:layout_alignRight="@+id/device_img4"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="5dp"
+                                android:background="#53000000"
+                                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                                android:visibility="gone"
+                                android:layout_alignEnd="@+id/device_img4"
+                                android:layout_marginEnd="5dp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+                <TextView
+                    android:id="@+id/img_error_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_image"
+                    android:textColor="@color/error_txt"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    app:layout_constraintLeft_toLeftOf="@+id/img_con"
+                    app:layout_constraintTop_toBottomOf="@+id/img_con" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/button_background"
+                    android:text="@string/submit"
+                    android:textColor="#fff"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_error_text" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/btn_bg_no_color"
+                    android:text="@string/cancel"
+                    app:layout_constraintLeft_toLeftOf="@+id/img_error_text"
+                    app:layout_constraintTop_toBottomOf="@+id/img_error_text" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

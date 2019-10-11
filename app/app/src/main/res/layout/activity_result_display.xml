@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2018-2019 Qualcomm Technologies, Inc.
+  ~ All rights reserved.
+  ~ Redistribution and use in source and binary forms, with or without modification, are permitted (subject to the limitations in the disclaimer below) provided that the following conditions are met:
+  ~ * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  ~ * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  ~ * Neither the name of Qualcomm Technologies, Inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+  ~ * The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment is required by displaying the trademark/log as per the details provided here: [https://www.qualcomm.com/documents/dirbs-logo-and-brand-guidelines]
+  ~ * Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
+  ~ * This notice may not be removed or altered from any source distribution.
+  ~ NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_result_display"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".result.view.ResultDisplayActivity">
+
+    <LinearLayout
+        android:id="@+id/mismatch_con"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <include layout="@layout/report_mismatch_layout" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mismatch_con"
+        android:layout_below="@+id/toolbar"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:weightSum="1.0">
+
+            <TextView
+                android:id="@+id/deviceIdTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_imei"
+                android:drawableLeft="@drawable/ic_imei"
+                android:text="@string/imei"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_tac"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark" />
+
+            <TextView
+                android:id="@+id/manufacturerTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_manufacturer"
+                android:drawableLeft="@drawable/ic_manufacturer"
+                android:text="@string/manufacturer"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_manufacturer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark" />
+
+            <TextView
+                android:id="@+id/equipmentTypeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_device_type"
+                android:drawableLeft="@drawable/ic_device_type"
+                android:text="@string/device_type"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_deviceType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark" />
+
+            <TextView
+                android:id="@+id/brandNameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_brand_name"
+                android:drawableLeft="@drawable/ic_brand_name"
+                android:text="@string/brand_name"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_brandName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_brand_name"
+                android:drawableLeft="@drawable/ic_brand_name"
+                android:text="@string/complete_name"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_completeName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/modelNameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_model_name"
+                android:drawableLeft="@drawable/ic_model_name"
+                android:text="@string/model_name"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_modelName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark" />
+
+            <TextView
+                android:id="@+id/marketingNameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_market_name"
+                android:drawableLeft="@drawable/ic_market_name"
+                android:text="@string/marketing_name"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_marketingName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark" />
+
+            <TextView
+                android:id="@+id/internalModelNameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_internal_model"
+                android:drawableLeft="@drawable/ic_internal_model"
+                android:text="@string/internal_model_name"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_internalModelName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark" />
+
+            <TextView
+                android:id="@+id/tacApprovedDateTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_date"
+                android:drawableLeft="@drawable/ic_date"
+                android:text="@string/allocation_date"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_allocationDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark" />
+
+            <TextView
+                android:id="@+id/deviceCertifyBodyTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_certification_body"
+                android:drawableLeft="@drawable/ic_certification_body"
+                android:text="@string/device_certification_body"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_deviceCertificationBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_country_code"
+                android:drawableLeft="@drawable/ic_country_code"
+                android:text="@string/country_code"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_countryCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_fixed_code"
+                android:drawableLeft="@drawable/ic_fixed_code"
+                android:text="@string/fixed_code"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_fixedCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_manufacturer_code"
+                android:drawableLeft="@drawable/ic_manufacturer_code"
+                android:text="@string/manufacturer_code"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_manufacturerCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/radioInterfaceTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_radio_interface"
+                android:drawableLeft="@drawable/ic_radio_interface"
+                android:text="@string/radio_interface"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_radioInterface"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark" />
+
+            <TextView
+                android:id="@+id/operatingSystemTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_operating_system"
+                android:drawableLeft="@drawable/ic_operating_system"
+                android:text="@string/operating_system"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_operatingSystem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark" />
+
+            <TextView
+                android:id="@+id/simSupportTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_sim_card"
+                android:drawableLeft="@drawable/ic_sim_card"
+                android:text="@string/sim_support"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_sim_support"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark" />
+
+            <TextView
+                android:id="@+id/nfcTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_nfc"
+                android:drawableLeft="@drawable/ic_nfc"
+                android:text="@string/nfc"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_nfc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark" />
+
+            <TextView
+                android:id="@+id/bluetoothTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_bluetooth"
+                android:drawableLeft="@drawable/ic_bluetooth"
+                android:text="@string/bluetooth"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_bluetooth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark" />
+
+
+            <TextView
+                android:id="@+id/wlanTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_wlan"
+                android:drawableLeft="@drawable/ic_wlan"
+                android:text="@string/wlan"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_wlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark" />
+
+            <TextView
+                android:id="@+id/lpwanTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableStart="@drawable/ic_wan"
+                android:drawableLeft="@drawable/ic_wan"
+                android:text="@string/lpwan"
+                android:gravity="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textColor="@color/text_color_light"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_lpwan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTextBackground"
+                android:padding="10dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/text_color_dark" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+</RelativeLayout>

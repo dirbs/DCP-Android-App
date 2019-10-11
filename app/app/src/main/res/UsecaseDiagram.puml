@@ -1,0 +1,27 @@
+@startuml
+(Check IMEI) as (CheckIMEI)
+(Check TAC) as (CheckTAC)
+(Scan IMEI) as (ScanIMEI)
+(See Results) as (results)
+(Login) as (login)
+(Actvity Log) as (log)
+
+User -right-> (login)
+User -right-> (CheckIMEI)
+User -right-> (CheckTAC)
+User -right-> (ScanIMEI)
+User --> (results)
+
+Admin -left->(log)
+
+
+
+(CheckTAC) ... (results)
+(CheckIMEI) ... (results)
+(ScanIMEI) ... (results)
+
+
+(CheckTAC) ... (log)
+(CheckIMEI) ... (log)
+(ScanIMEI) ... (log)
+@enduml

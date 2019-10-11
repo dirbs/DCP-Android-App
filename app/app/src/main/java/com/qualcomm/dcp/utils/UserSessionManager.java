@@ -11,32 +11,71 @@
  * NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+package com.qualcomm.dcp.utils;
 
-buildscript {
-    ext.kotlin_version = '1.3.41'
-    repositories {
-        jcenter()
-        google()
+import android.content.Context;
+
+/*
+ * This class maintains user login session status.
+ **/
+public class UserSessionManager {
+
+    private final MyPreferences myPreferences;
+    private final String LOGGED_IN = "LoggedIn";
+    private final String USER_ID = "UserId";
+    private final String IS_ADMIN = "IsAdmin";
+    private final String STATUS = "Status";
+
+    public String getUSERNAME() {
+        return myPreferences.getString(USERNAME, "");
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+    private final String USERNAME = "Username";
+    private final String LOGIN_TOKEN = "LoginToken";
+
+    public UserSessionManager(Context context) {
+        myPreferences = new MyPreferences(context);
+
     }
-}
 
-allprojects {
-    repositories {
-        jcenter()
-        maven { url "https://jitpack.io" }
-        mavenCentral()
-        google()
+    //    Save login status.
+    public void loginStore(boolean loggedIn, String userid, String isadmin, String status, String username, String token) {
+        myPreferences.setBoolean(LOGGED_IN, loggedIn);
+        myPreferences.setString(USER_ID, userid);
+        myPreferences.setString(IS_ADMIN, isadmin);
+        myPreferences.setString(STATUS, status);
+        myPreferences.setString(USERNAME, username);
+        myPreferences.setString(LOGIN_TOKEN, token);
     }
-}
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+    //    Save login status.
+    public void logout() {
+        myPreferences.setBoolean(LOGGED_IN, false);
+        myPreferences.setString(USER_ID, "");
+        myPreferences.setString(IS_ADMIN, "");
+        myPreferences.setString(STATUS, "");
+        myPreferences.setString(USERNAME, "");
+        myPreferences.setString(LOGIN_TOKEN, "");
+    }
+
+    //    Get login status.
+    public boolean loginCheck() {
+        boolean loginStatus;
+        loginStatus = myPreferences.getBoolean(LOGGED_IN, false);
+        return loginStatus;
+    }
+
+    //Get Login token
+    public String getLoginToken() {
+        return myPreferences.getString(LOGIN_TOKEN, "");
+    }
+
+    public String getUserId() {
+        return myPreferences.getString(USER_ID, null);
+    }
+
+    public String getIsAdmin() {
+        return myPreferences.getString(IS_ADMIN, null);
+    }
+
 }

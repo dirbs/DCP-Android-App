@@ -11,32 +11,87 @@
  * NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+package com.qualcomm.dcp.utils;
 
-buildscript {
-    ext.kotlin_version = '1.3.41'
-    repositories {
-        jcenter()
-        google()
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
+
+/**
+ * Created by Aarif on 4/19/2016.
+ */
+public class MyPreferences {
+    private final SharedPreferences preferences;
+    private final SharedPreferences.Editor editor;
+
+    @SuppressLint("CommitPrefEdits")
+    public MyPreferences(Context context) {
+        Log.e("package", "package name = " + context.getPackageName());
+        preferences = context.getSharedPreferences(context.getPackageName(), 0);
+        editor = preferences.edit();
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+    /**
+     * put int preference
+     *
+     * @param prefName preference name
+     * @param val preference value
+     */
+    public void setInt(String prefName, int val) {
+        editor.putInt(prefName, val).commit();
     }
-}
 
-allprojects {
-    repositories {
-        jcenter()
-        maven { url "https://jitpack.io" }
-        mavenCentral()
-        google()
+    /**
+     * put String preference
+     *
+     * @param prefName preference name
+     * @param val preference value
+     */
+    public void setString(String prefName, String val) {
+
+        Log.e("setstring", "Str name = " + prefName + " Str val= " + val);
+        editor.putString(prefName, val).commit();
     }
-}
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+    /**
+     * put boolean preference
+     *
+     * @param prefName preference name
+     * @param val preference value
+     */
+    public void setBoolean(String prefName, boolean val) {
+        editor.putBoolean(prefName, val).commit();
+    }
+
+    /**
+     * get int preference
+     *
+     * @param prefName preference name
+     * @param valDef preference value
+     */
+    public int getInt(String prefName, int valDef) {
+        return preferences.getInt(prefName, valDef);
+    }
+
+    /**
+     * put String preference
+     *
+     * @param prefName preference name
+     * @param valDef preference value
+     */
+    public String getString(String prefName, String valDef) {
+        return preferences.getString(prefName, valDef);
+    }
+
+    /**
+     * put boolean preference
+     *
+     * @param prefName preference name
+     * @param valDef preference value
+     */
+    public boolean getBoolean(String prefName, boolean valDef) {
+        return preferences.getBoolean(prefName, valDef);
+    }
+
 }

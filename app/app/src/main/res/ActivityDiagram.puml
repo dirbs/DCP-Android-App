@@ -1,0 +1,44 @@
+@startuml
+(*top)  --> "Login"
+If "validate login" then
+note left: Authenticate User
+--> [YES] ===B1===
+note right: Start Main Screen
+--> "Check IMEI"
+If "" then
+note left: Valid IMEI
+  -->[true] ==B2==
+note right: Get information of IMEI or TAC \nfrom Backend server
+
+else
+  -->[false] "Check IMEI"
+endif
+
+===B1=== --> "Check TAC"
+If "" then
+note left: Valid TAC
+  -->[true] ==B2==
+else
+  -->[false] "Check TAC"
+endif
+
+===B1=== --> "Scan IMEI"
+If "" then
+note left: Valid IMEI
+  -->[true] ==B2==
+  --> "Create Activity Log"
+  --> "Display Result"
+  -->(*)
+else
+
+  -->[false] "Scan IMEI"
+
+endif
+
+
+else
+-right-> [NO] "Display Error Message"
+--> "Login"
+endif
+
+@enduml

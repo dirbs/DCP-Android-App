@@ -1,0 +1,115 @@
+@startuml
+
+AppCompatActivity <|-- LoginActivity
+AppCompatActivity <|-- StartActivity
+AppCompatActivity <|-- DispalyResultActivity
+AppCompatActivity <|-- ResultDispalyActivity
+Fragment <|-- FragmentIMEI
+Fragment <|-- FragmentTAC
+Fragment <|-- ScannerFragment
+MyPrefrences o-- LoginActivity
+MyPrefrences o-- UserSessionManager
+UserSessionManager o-- LoginActivity
+SectionsPagerAdapter *-- StartActivity
+FragmentTAC *-- SectionsPagerAdapter
+FragmentIMEI *-- SectionsPagerAdapter
+ScannerFragment *-- SectionsPagerAdapter
+CommonMethods *-- FragmentTAC
+CommonMethods *-- FragmentIMEI
+DispalyResultActivity *-- FragmentTAC
+DispalyResultActivity *-- FragmentIMEI
+ResultDispalyActivity *-- FragmentTAC
+ResultDispalyActivity *-- FragmentIMEI
+ZXingScannerView.ResultHandler -- ScannerFragment : < implements
+
+MyPrefrences o-- FragmentIMEI
+MyPrefrences o-- FragmentTAC
+MyPrefrences o-- StartActivity
+MyPrefrences o-- ScannerFragment
+
+class ZXingScannerView.ResultHandler{
+onSavedInstanceState()
+onHandleResult()
+}
+
+class MyPrefrences{
+setBoolean()
+setString()
+setInt()
+setFloat()
+setLong()
+getBoolean()
+getString()
+getInt()
+getFloat()
+getLong()
+}
+
+class AppCompatActivity{
+onCreate()
+onDestroy()
+onPause()
+onResume()
+onStart()
+onStop()
+}
+
+class Fragment{
+onCreateView()
+onPause()
+onResume()
+}
+
+class LoginActivity {
+login()
+validate()
+}
+
+class SectionsPagerAdapter{
+getItem()
+getCount()
+getPageTitle()
+}
+class StartActivity{
+checkPermission()
+addPermision()
+onRequestPermissionsResult()
+}
+
+
+class FragmentTAC{
+authenticate()
+checkTAC()
+}
+class FragmentIMEI{
+authenticate()
+checkIMEI()
+}
+class ScannerFragment{
+authenticate()
+checkIMEI()
+}
+class CommonMethods{
+insertUserActivityLog()
+sendUserActivityLog()
+}
+class Constants{
++{static} String CLIENT_ID
++{static} String CLIENT_SECRET
++{static} String BASE_URL
++{static} String URL_DCP_DIRBS_PUBLIC_AUTH
++{static} String URL_DCP_DIRBS_PTA_IMEI_CHECK
++{static} String URL_DCP_DIRBS_PTA_TAC_CHECK
++{static} String URL_ACTIVITY_LOG_AUTH
++{static} String URL_LOGIN_AUTH
+
+}
+class UserSessionManager{
+loginStore()
+loginCheck()
+getLoginToken()
+}
+
+
+
+@enduml

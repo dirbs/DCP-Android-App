@@ -1,0 +1,201 @@
+<!--
+  ~ Copyright (c) 2018-2019 Qualcomm Technologies, Inc.
+  ~ All rights reserved.
+  ~ Redistribution and use in source and binary forms, with or without modification, are permitted (subject to the limitations in the disclaimer below) provided that the following conditions are met:
+  ~ * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  ~ * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+  ~ * Neither the name of Qualcomm Technologies, Inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+  ~ * The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment is required by displaying the trademark/log as per the details provided here: [https://www.qualcomm.com/documents/dirbs-logo-and-brand-guidelines]
+  ~ * Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
+  ~ * This notice may not be removed or altered from any source distribution.
+  ~ NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  -->
+
+<resources>
+    <string name="app_name">DCP</string>
+    <string name="imei">Device ID</string>
+    <string name="marketing_name">Marketing Name</string>
+    <string name="internal_model_name">Internal Model Name</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="allocation_date">TAC Approved Date</string>
+    <string name="country_code">Country Code</string>
+    <string name="fixed_code">Fixed Code</string>
+    <string name="manufacturer_code">Manufacturer Code</string>
+    <string name="radio_interface">Radio Interface</string>
+    <string name="brand_name">Brand Name</string>
+    <string name="model_name">Model Name</string>
+    <string name="operating_system">Operating System</string>
+    <string name="nfc">NFC Support</string>
+    <string name="bluetooth">Bluetooth Support</string>
+    <string name="wlan">WLAN Support</string>
+    <string name="device_type">Equipment Type</string>
+    <string name="title_activity_login">Login</string>
+    <string name="error_server_error">Sorry, something went wrong. Try again a little later.</string>
+    <string name="error_network_error">No Internet Connection! Please enable wifi or mobile data and try again.</string>
+    <string name="logout">Logout</string>
+    <string name="enter_digit_imei">Enter IMEI e.g. 123456789012345</string>
+    <string name="check">Check</string>
+    <string name="imei_must_be_number">IMEI must only contain numbers</string>
+    <string name="fifteen_digit_imei">Please enter 14–16 digit IMEI</string>
+    <string name="sure_to_logout">Are you sure you want to logout?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="ok">OK</string>
+    <string name="scan_result">Scan Result</string>
+    <string name="username">Email</string>
+    <string name="password">Password</string>
+    <string name="authenticating">Authenticating</string>
+    <string name="email_invalid">Invalid email!</string>
+    <string name="can_not_empty">Can\'t be empty!</string>
+    <string name="select_image">Select Images</string>
+    <string name="cancel">Cancel</string>
+    <string name="grant_write_storage">Please grant write external storage permission to select image.</string>
+    <string name="enter_device_name">Mobile Phone Brand</string>
+    <string name="enter_device_model">Model Name</string>
+    <string name="description">Description</string>
+    <string name="submit">Submit</string>
+    <string name="adding_device_info">Adding Device Information…</string>
+    <string name="history">History</string>
+    <string name="verify_scan">Verify Scan</string>
+    <string name="verify_scan_detail">Please verify IMEI number from scan and press OK to continue</string>
+    <string name="checking">Checking</string>
+    <string name="device_not_found">IMEI not found!</string>
+    <string name="no_internet">No Internet!</string>
+    <string name="yes_enable">Yes, enable it!</string>
+    <string name="instruction_detail">
+        &lt;html&gt;
+         &lt;head&gt;&lt;/head&gt;
+         &lt;body style=&quot;text-align:justify;color:#444;background-color: #00000000;&quot;&gt;
+           The IMEI (International Mobile Equipment Identity) is a globally unique number to identify any SIM based mobile device. You can view the mobile phone\'s IMEI by pressing *#06# on dialpad of the device. If the device has two simcards, you will see two 14-16 digit codes. Enter the 14-16 digit IMEI number in the box and click on the &quot;check&quot; box to view its detail.
+         &lt;/body&gt;
+        &lt;/html&gt;
+        </string>
+    <string name="about_detail">
+        &lt;html&gt;
+         &lt;head&gt;&lt;/head&gt;
+         &lt;body style=&quot;text-align:justify;color:#444;background-color: #00000000;&quot;&gt;
+           Device Characterization Platform (DCP) is a platform for authorized users to categorize devices based on their IMEI by querying GSMA IMEI database. It fetches information associated with an IMEI from the database and displays to user. It gives option to user to report counterfeit device if its TAC part of IMEI is not approved by GSMA or characteristics retrieved from the database does not match with the physical device.
+
+build number:
+
+version:
+
+website:
+copyrights
+
+what is new in the version?
+terms of use and privacy policy?
+         &lt;/body&gt;
+        &lt;/html&gt;
+        </string>
+    <string name="instructions">Instructions</string>
+    <string name="session_expired">Session Expired!</string>
+    <string name="session_expired_detail">Your session has expired. Please login again to continue using DCP.</string>
+    <string name="type_imei">Type IMEI</string>
+    <string name="scan_imei">Scan IMEI</string>
+    <string name="password_should_be_min_six">Must be at least minimum 6 characters</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="verifying">Verifying</string>
+    <string name="reset_email_sent">A reset email has been sent! Please check your email.</string>
+    <string name="please_enter_password_to_reset">Please enter your email address to reset your password</string>
+    <string name="no_records_found">No records found!</string>
+    <string name="report_device">Report Mobile Phone</string>
+    <string name="reported">Reported</string>
+    <string name="device_notfound_details"> not found in database. This device may be a counterfeit or illegal. Please report this device through DCP!\n\n To fill the form press Report Mobile Phone.</string>
+    <string name="device_images">Device Images</string>
+    <!--<string name="license">-->
+    <!--&lt;html&gt;-->
+    <!--&lt;head&gt;&lt;/head&gt;-->
+    <!--&lt;body style=&quot;text-align:justify;color:#444444;background-color: #00000000;&quot;&gt;-->
+    <!--&lt;h2&gt;Sample End-User License Agreement (&quot;Agreement&quot;)&lt;/h2&gt;-->
+    <!--&lt;p&gt;Last updated: 06 December, 2017&lt;/p&gt;-->
+    <!--&lt;p&gt;Please read this End-User License Agreement (&quot;Agreement&quot;) carefully before clicking the &quot;I Agree&quot; button, downloading or using Device Verification System (&quot;Application&quot;).&lt;/p&gt;-->
+
+    <!--&lt;p&gt;By clicking the &quot;I Agree&quot; button, downloading or using the Application, you are agreeing to be bound by the terms and conditions of this Agreement.&lt;/p&gt;-->
+
+    <!--&lt;p&gt; If you do not agree to the terms of this Agreement, do not click on the &quot;I Agree&quot; button and do not download or use the Application.&lt;/p&gt;-->
+
+    <!--&lt;h3&gt;License&lt;/h3&gt;-->
+
+    <!--&lt;p&gt; Qualcomm/CACF grants you a revocable, non-exclusive, non-transferable, limited license to download, install and use the Application solely for your personal, non-commercial purposes strictly in accordance with the terms of this Agreement.&lt;/p&gt;-->
+
+    <!--&lt;h3&gt; Restrictions&lt;/h3&gt;-->
+
+    <!--&lt;p&gt; You agree not to, and you will not permit others to:&lt;/p&gt;-->
+
+
+    <!--&lt;p&gt;-->
+    <!--a) license, sell, rent, lease, assign, distribute, transmit, host, outsource, disclose or otherwise commercially exploit the Application or make the Application available to any third party.-->
+    <!--&lt;/p&gt;-->
+
+    <!--&lt;h4&gt;  Modifications to Application&lt;/h4&gt;-->
+    <!--&lt;p&gt;Qualcomm/CACF reserves the right to modify, suspend or discontinue, temporarily or permanently, the Application or any service to which it connects, with or without notice and without liability to you.&lt;/p&gt;-->
+
+    <!--&lt;h4&gt; Term and Termination&lt;/h4&gt;-->
+    <!--&lt;p&gt;This Agreement shall remain in effect until terminated by you or Qualcomm/CACF&lt;/p&gt;-->
+    <!--&lt;p&gt;-->
+    <!--Qualcomm/CACF may, in its sole discretion, at any time and for any or no reason, suspend or terminate this Agreement with or without prior notice&lt;/p&gt;-->
+    <!--&lt;p&gt;This Agreement will terminate immediately, without prior notice from Qualcomm/CACF, in the event that you fail to comply with any provision of this Agreement. You may also terminate this Agreement by deleting the Application and all copies thereof from your mobile device or from your desktop.&lt;/p&gt;-->
+    <!--&lt;p&gt;Upon termination of this Agreement, you shall cease all use of the Application and delete all copies of the Application from your mobile device or from your desktop.&lt;/p&gt;-->
+
+    <!--&lt;h4&gt;Severability&lt;/h4&gt;-->
+    <!--&lt;p&gt;If any provision of this Agreement is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.&lt;/p&gt;-->
+
+    <!--&lt;h4&gt;Amendments to this Agreement-->
+    <!--&lt;/h4&gt;-->
+    <!--&lt;p&gt;Qualcomm/CACF reserves the right, at its sole discretion, to modify or replace this Agreement at any time. If a revision is material we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.&lt;/p&gt;-->
+
+    <!--&lt;p&gt;If you have any questions about this Agreement, please contact us.&lt;/p&gt;-->
+    <!--&lt;/body&gt;-->
+    <!--&lt;/html&gt;-->
+    <!--</string>-->
+    <string name="i_accept">I Agree</string>
+    <string name="continue_txt">Continue</string>
+    <string name="verify_input">Verify Input</string>
+    <string name="verify_input_detail">Please verify IMEI number you entered. Press OK to continue or CANCEL to re-enter</string>
+    <string name="store_name">Store Name</string>
+    <string name="address">Address</string>
+    <string name="report_mismatch_description">Does the record field match with the device?</string>
+    <string name="no_report">No, Report</string>
+    <string name="device_status_updated">Device status updated successfully</string>
+    <string name="feedback_sent">Feedback sent.</string>
+    <string name="updating_device_status">Updating Device Status</string>
+    <string name="please_report_device_to_close">Please report device to close!</string>
+    <string name="scan_help_text">Please place the barcode inside the box.</string>
+    <string name="complete_name">Complete Name</string>
+    <string name="device_certification_body">Device Certify Body</string>
+    <string name="sim_support">SIM Support</string>
+    <string name="lpwan">LPWAN</string>
+    <string name="imei_no">IMEI</string>
+    <string name="info">Help</string>
+    <string name="brandInfo">Enter the valid brand name of the device.</string>
+    <string name="modelInfo">Enter the valid model name of the device.</string>
+    <string name="storeInfo">Enter the valid store name of the device.</string>
+    <string name="addressInfo">Enter the valid address where the device is located.</string>
+    <string name="desInfo">Add description for your device.</string>
+    <string name="imagesInfo">Upload valid images of the device.</string>
+    <string name="oops">Oops…</string>
+    <string name="feedback">Feedback</string>
+    <string name="send_feedback">Send Feedback</string>
+    <string name="submit_feedback">Submit Feedback</string>
+    <string name="home">Home</string>
+    <string name="submitting_feedback">Submitting Feedback</string>
+    <string name="search">Search IMEI</string>
+    <string name="about">About</string>
+    <string name="feedback_hint">Enter your feedback here.</string>
+    <string name="successful">Successful</string>
+    <string name="icon" translatable="false">Icon</string>
+    <string name="login_to_continue">Login to Continue</string>
+
+    <string name="please_allow_camera">Please Allow Camera Access for Scanning Barcode of IMEI</string>
+    <string name="allow_access">Allow Access</string>
+    <string name="permission_access">Permission Access</string>
+    <string name="camera_permission_needed">Camera permission needed for scanner.</string>
+    <string name="permission_denied">Permission denied for camera.</string>
+    <string name="flash_button">Flash Button</string>
+    <string name="focus_button">Focus Button</string>
+
+    <string name="storage_permission_needed">Storage permission needed for selecting images.</string>
+    <string name="storage_permission_denied">Permission denied for storage.</string>
+</resources>
