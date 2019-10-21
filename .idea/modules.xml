@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DCP-Andorid-App.iml" filepath="$PROJECT_DIR$/DCP-Andorid-App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DCP-Android-App.iml" filepath="$PROJECT_DIR$/DCP-Android-App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/DCP-Android-App-app.iml" filepath="$PROJECT_DIR$/app/DCP-Android-App-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/Github-DCP-Andorid-App.iml" filepath="$PROJECT_DIR$/Github-DCP-Andorid-App.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

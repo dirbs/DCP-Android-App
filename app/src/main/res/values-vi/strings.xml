@@ -183,7 +183,7 @@
     <string name="about_detail"><![CDATA["        <html>          <head></head>          <body style="text-align:justify;color:#444;background-color: #00000000;">            Nền tảng đặc tính thiết bị (DCP) là một nền tảng để người dùng được ủy quyền phân loại thiết bị dựa trên IMEI của họ bằng cách truy vấn cơ sở dữ liệu IMEI của GSMA. Nó tìm nạp thông tin liên quan đến IMEI từ cơ sở dữ liệu và hiển thị cho người dùng. Nó cung cấp tùy chọn cho người dùng báo cáo thiết bị giả nếu phần TAC của IMEI không được GSMA chấp thuận hoặc các đặc điểm được truy xuất từ ​​cơ sở dữ liệu không khớp với thiết bị vật lý.  số bản dựng: …  phiên bản: …  trang mạng: … bản quyền …  Có gì mới trong phiên bản? Điều khoản sử dụng và chính sách quyền riêng tư?          </body>         </html>"]]></string>
     <string name="feedback_hint">Nhập phản hồi của bạn ở đây.</string>
     <string name="successful">Thành công</string>
-    <string name="login_to_continue">Đăng nhập để tiếp tục</string>
+    <string name="dcp">Nền tảng đặc tính thiết bị</string>
 
     <string name="please_allow_camera">Vui lòng cho phép truy cập máy ảnh để quét mã vạch IMEI</string>
     <string name="allow_access">Cho phép truy cập</string>
