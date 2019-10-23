@@ -186,7 +186,7 @@ terms of use and privacy policy?
     <string name="feedback_hint">Enter your feedback here.</string>
     <string name="successful">Successful</string>
     <string name="icon" translatable="false">Icon</string>
-    <string name="login_to_continue">Login to Continue</string>
+    <string name="dcp">Device Characterisation Platform</string>
 
     <string name="please_allow_camera">Please Allow Camera Access for Scanning Barcode of IMEI</string>
     <string name="allow_access">Allow Access</string>
