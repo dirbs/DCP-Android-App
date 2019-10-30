@@ -23,7 +23,6 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.rule.GrantPermissionRule;
 
-import com.google.android.gms.vision.barcode.Barcode;
 import com.google.gson.Gson;
 import com.google.zxing.Result;
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
@@ -317,15 +316,5 @@ public class ScannerFragmentTests {
                 throw new IllegalStateException("no mock set up for " + request.getPath());
             }
         };
-    }
-
-    // Unit test unauthorized imei call
-    @Test
-    public void testImeiCallUnauthorized() {
-
-        Barcode barcode = new Barcode();
-        barcode.displayValue = "";
-        InstrumentationRegistry.getInstrumentation().waitForIdleSync();
-        onView(withTagValue(Matchers.is("SCAN_TAB"))).perform(click());
     }
 }
