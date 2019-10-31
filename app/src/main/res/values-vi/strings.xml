@@ -55,7 +55,6 @@
     <string name="select_image">Chọn ảnh</string>
     <string name="email_invalid">Thư điện tử không hợp lệ!</string>
     <string name="cancel">Hủy</string>
-    <string name="grant_write_storage">Xin vui lòng cấp Write External Storage Cho phép chọn hình ảnh.</string>
     <string name="enter_device_name">Nhập tên thiết bị</string>
     <string name="enter_device_model">Nhập Số Mô hình Thiết bị</string>
     <string name="description">Sự miêu tả</string>
@@ -191,7 +190,6 @@
     <string name="camera_permission_needed">Sự cho phép máy ảnh cần thiết cho máy quét.</string>
     <string name="permission_denied">Quyền bị từ chối cho máy ảnh.</string>
     <string name="flash_button">Nút Flash</string>
-    <string name="focus_button">Nút lấy nét</string>
 
     <string name="storage_permission_needed">Quyền lưu trữ cần thiết để chọn hình ảnh.</string>
     <string name="storage_permission_denied">Quyền bị từ chối để lưu trữ.</string>
