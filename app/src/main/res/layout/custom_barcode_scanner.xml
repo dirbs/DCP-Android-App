@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!--
   ~ Copyright (c) 2018-2019 Qualcomm Technologies, Inc.
   ~ All rights reserved.
@@ -13,28 +12,23 @@
   ~ NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   -->
 
-<resources>
-    <color name="colorPrimary">#125D8D</color>
-    <color name="colorPrimaryDark">#0B3852</color>
-    <color name="colorAccent">#125D8D</color>
-    <color name="button_color">#0B3852</color>
-    <color name="button_color_trns">#125D8D</color>
-    <color name="btn_text_color">#fff</color>
-    <color name="text_color_light">#757575</color>
-    <color name="text_color_dark">#424242</color>
-    <color name="white_trans">#5affffff</color>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <color name="transparent">#00000000</color>
-    <color name="white">#FFFFFF</color>
-    <color name="colorTextBackground">#f5f5f5</color>
-    <color name="loading">#1B5E20</color>
-    <color name="link_color">#008cff</color>
-    <color name="simpletooltip_background">@color/colorPrimary</color>
-    <color name="simpletooltip_text">#fff</color>
-    <color name="simpletooltip_arrow">@color/colorPrimary</color>
-    <color name="colorBlack">#000000</color>
-    <color name="button_color_red">#b71c1c</color>
-    <color name="button_color_red_trns">#e57373</color>
-    <color name="error_txt">#c62828</color>
-    <color name="grey">#efefef</color>
-</resources>
+    <com.journeyapps.barcodescanner.BarcodeView
+        android:id="@+id/zxing_barcode_surface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:zxing_framing_rect_height="50dp"
+        app:zxing_framing_rect_width="250dp" />
+
+    <com.journeyapps.barcodescanner.ViewfinderView
+        android:id="@+id/zxing_viewfinder_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:zxing_possible_result_points="@color/transparent"
+        app:zxing_result_view="@color/transparent"
+        app:zxing_viewfinder_laser="@color/colorPrimary"
+        app:zxing_viewfinder_mask="@color/zxing_custom_viewfinder_mask" />
+
+</merge>

@@ -168,13 +168,13 @@ public class CounterfeitActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N_MR1) {
+//        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N_MR1) {
             MyPreferences myPreferences = new MyPreferences(newBase);
             super.attachBaseContext(ContextWrapper.wrap(newBase, myPreferences.getString("locale", "en")));
-        }
-        else {
-            super.attachBaseContext(newBase);
-        }
+//        }
+//        else {
+//            super.attachBaseContext(newBase);
+//        }
     }
 
     // Invoked upon closing of this activity. View is unbinded from presenter and xml objects

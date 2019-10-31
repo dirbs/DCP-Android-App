@@ -14,9 +14,8 @@
 package com.qualcomm.dcp.verify.view;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Rect;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +30,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.zxing.Result;
+import com.google.zxing.ResultPoint;
+import com.journeyapps.barcodescanner.BarcodeCallback;
+import com.journeyapps.barcodescanner.BarcodeResult;
+import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
 import com.qualcomm.dcp.R;
 import com.qualcomm.dcp.counterfeit.view.CounterfeitActivity;
@@ -41,27 +43,40 @@ import com.qualcomm.dcp.utils.Utils;
 import com.qualcomm.dcp.verify.model.ImeiResponse;
 import com.qualcomm.dcp.verify.presenter.VerifyImeiPresenter;
 
+import java.util.List;
 import java.util.Objects;
 
-import me.dm7.barcodescanner.core.IViewFinder;
-import me.dm7.barcodescanner.core.ViewFinderView;
-import me.dm7.barcodescanner.zxing.ZXingScannerView;
+public class ScannerFragment extends Fragment implements VerifyImeiInterface {
 
-public class ScannerFragment extends Fragment implements ZXingScannerView.ResultHandler, VerifyImeiInterface {
-
-    private ZXingScannerView mScannerView;
-
+    private boolean isFlashAvailable;
+    private ImageButton flashButton;
     private AlertDialog mAlertDialog;
+    private DecoratedBarcodeView barcodeView;
     private VerifyImeiPresenter mVerifyImeiPresenter;
     public SweetAlertDialog mProgressDialog;
     private String mUserInput = "";
     private boolean mFlash;
-    private boolean mFocus = true;
-    private ViewGroup mContentFrame;
+    private AlertDialog alertDialog;
+    private boolean mIsScannerVisible;
 
     public ScannerFragment() {
         // Required empty public constructor
     }
+
+    //call back to capture scan result
+    public BarcodeCallback callback = new BarcodeCallback() {
+        @Override
+        public void barcodeResult(BarcodeResult result) {
+            String imei = result.getText();
+            barcodeView.pause();
+            handleResult(imei);
+        }
+
+        @Override
+        public void possibleResultPoints(List<ResultPoint> resultPoints) {
+
+        }
+    };
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -69,42 +84,23 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
 
         View view = inflater.inflate(R.layout.scan_fragment, container, false);
 
-        mContentFrame = view.findViewById(R.id.content_frame);
-        ImageButton flashButton = view.findViewById(R.id.btn_flash);
-        ImageButton focusButton = view.findViewById(R.id.btn_focus);
+        barcodeView = view.findViewById(R.id.barcode_view);
+        barcodeView.decodeContinuous(callback);
 
-        flashButton.setOnClickListener(view1 -> {
-            toggleFlash();
-            if (mFlash)
-                flashButton.setImageResource(R.drawable.ic_flash_on);
-            else
-                flashButton.setImageResource(R.drawable.ic_flash_off);
-        });
+        flashButton = view.findViewById(R.id.btn_flash);
 
-        focusButton.setOnClickListener(view1 -> {
-            toggleFocus();
-            if (mFocus)
-                focusButton.setImageResource(R.drawable.ic_focus_on);
-            else
-                focusButton.setImageResource(R.drawable.ic_focus_off);
-        });
+        isFlashAvailable = Objects.requireNonNull(getActivity()).getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
 
-        mScannerView = new ZXingScannerView(getContext());
-
-        mScannerView = new ZXingScannerView(getActivity()) {
-            @Override
-            protected IViewFinder createViewFinderView(Context context) {
-                return new CustomViewFinderView(context);
-            }
-        };
-
-        mScannerView.setBorderColor(getResources().getColor(R.color.colorAccent));
-        mScannerView.setBorderCornerRadius((int) Utils.convertPixelsToDp(100, Objects.requireNonNull(getActivity())));
-        mScannerView.setIsBorderCornerRounded(true);
-        mScannerView.setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_rect_white));
-        mScannerView.setFocusable(true);
-
-        mContentFrame.addView(mScannerView);
+        if (isFlashAvailable)
+            flashButton.setOnClickListener(view1 -> {
+                toggleFlash();
+                if (mFlash)
+                    flashButton.setImageResource(R.drawable.ic_flash_on);
+                else
+                    flashButton.setImageResource(R.drawable.ic_flash_off);
+            });
+        else
+            flashButton.setVisibility(View.GONE);
 
         setupMVP();
 
@@ -115,33 +111,24 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
         return mAlertDialog;
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (barcodeView != null) {
+            if (isVisibleToUser) {
+                barcodeView.resume();
+            } else {
+                barcodeView.pauseAndWait();
+            }
+        }
+    }
+
     private void toggleFlash() {
         mFlash = !mFlash;
-        mScannerView.setFlash(mFlash);
-    }
-
-    private void toggleFocus() {
-        mFocus = !mFocus;
-        mScannerView.setAutoFocus(mFocus);
-    }
-
-    private class CustomViewFinderView extends ViewFinderView {
-
-        @Override
-        public Rect getFramingRect() {
-            Rect originalRect = super.getFramingRect();
-
-            int left = (10 * mContentFrame.getWidth()) / 100;
-            int right = (90 * mContentFrame.getWidth()) / 100;
-            int top = (35 * mContentFrame.getHeight()) / 100;
-            int bottom = (65 * mContentFrame.getHeight()) / 100;
-            originalRect.set(left, top, right, bottom);
-
-            return originalRect;
-        }
-
-        public CustomViewFinderView(Context context) {
-            super(context);
+        if (mFlash) {
+            barcodeView.setTorchOn();
+        } else {
+            barcodeView.setTorchOff();
         }
     }
 
@@ -150,55 +137,60 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
         mVerifyImeiPresenter = new VerifyImeiPresenter(this, getActivity());
     }
 
-    private void startScanner() {
-        stopScanner();
-        if (mScannerView != null) {
-            mScannerView.setResultHandler(this); // Register ourselves as a handler for scan results.
-            mScannerView.startCamera();          // Start camera on resume
-            mScannerView.setFlash(mFlash);
-            mScannerView.setAutoFocus(mFocus);
+    public void startScanner(boolean b) {
+        mIsScannerVisible = b;
+        if (barcodeView != null) {
+            barcodeView.resume();
         }
     }
 
-    private void stopScanner() {
-        if (mScannerView != null) {
-            mScannerView.setResultHandler(null);
-            mScannerView.stopCameraPreview();
-            mScannerView.stopCamera();
+    public void stopScanner(boolean isScannerVisible) {
+        mIsScannerVisible = isScannerVisible;
+        if (barcodeView != null) {
+//            barcodeView.pauseAndWait();
+            barcodeView.pause();
         }
     }
 
     @Override
     public void onResume() {
-        startScanner();
+        startScanner(true);
         super.onResume();
     }
 
     @Override
     public void onPause() {
-        stopScanner();
+        stopScanner(true);
         super.onPause();
     }
 
     @Override
     public void onDestroyView() {
-        stopScanner();
+        stopScanner(true);
+        if (alertDialog != null && alertDialog.isShowing())
+            alertDialog.dismiss();
         super.onDestroyView();
     }
 
     @Override
     public void onStop() {
-        stopScanner();
+        stopScanner(true);
         super.onStop();
     }
 
-    @Override
-    public void handleResult(Result rawResult) {
-        showVerifyImeiDialog(rawResult.getText());
+    public void handleResult(String rawResult) {
+        showVerifyImeiDialog(rawResult);
     }
 
     // For showing dialog to verify imei
     private void showVerifyImeiDialog(String imei) {
+
+        if (isFlashAvailable) {
+            barcodeView.setTorchOff();
+            mFlash = false;
+            flashButton.setImageResource(R.drawable.ic_flash_off);
+
+        }
         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
         LayoutInflater inflater = getActivity().getLayoutInflater();
         @SuppressLint("InflateParams") final View dialogView = inflater.inflate(R.layout.scan_confirmation_dialog, null);
@@ -220,7 +212,7 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
 
         });
 
-        dialogBuilder.setOnDismissListener(dialogInterface -> mScannerView.resumeCameraPreview(ScannerFragment.this));
+        dialogBuilder.setOnDismissListener(dialogInterface -> barcodeView.resume());
 
         getActivity().runOnUiThread(() -> {
             mAlertDialog = dialogBuilder.create();
@@ -260,7 +252,8 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
 
             mAlertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(view -> {
                 mAlertDialog.dismiss();
-                mScannerView.resumeCameraPreview(ScannerFragment.this);
+                if (mIsScannerVisible)
+                    barcodeView.resume();
             });
         });
     }
@@ -381,10 +374,10 @@ public class ScannerFragment extends Fragment implements ZXingScannerView.Result
 
             icon.setImageDrawable(getResources().getDrawable(R.drawable.ic_warn));
             title.setText(R.string.device_not_found);
-            String msgTxt = mUserInput + " " + getResources().getString(com.qualcomm.dcp.R.string.device_notfound_details);
+            String msgTxt = mUserInput + " " + getResources().getString(R.string.device_notfound_details);
             message.setText(msgTxt);
 
-            AlertDialog alertDialog = reportDialog.create();
+            alertDialog = reportDialog.create();
             alertDialog.setCancelable(false);
             alertDialog.setCanceledOnTouchOutside(false);
 

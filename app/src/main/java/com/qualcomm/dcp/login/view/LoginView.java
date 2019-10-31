@@ -18,7 +18,6 @@ import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -95,7 +94,6 @@ public class LoginView extends AppCompatActivity implements LoginViewInterface, 
         super.onCreate(savedInstanceState);
 
         mMyPreferences = new MyPreferences(this);
-        Utils.changeLanguageLocale(getBaseContext(), mMyPreferences.getString("locale", "en"));
         setContentView(R.layout.activity_login);
         mUnbind = ButterKnife.bind(this);
 
@@ -123,13 +121,13 @@ public class LoginView extends AppCompatActivity implements LoginViewInterface, 
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N_MR1) {
+//        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N_MR1) {
             MyPreferences myPreferences = new MyPreferences(newBase);
             super.attachBaseContext(ContextWrapper.wrap(newBase, myPreferences.getString("locale", "en")));
-        }
-        else {
-            super.attachBaseContext(newBase);
-        }
+//        }
+//        else {
+//            super.attachBaseContext(newBase);
+//        }
     }
 
     // Upon closing of this activity views are unbidden and presenter is detached

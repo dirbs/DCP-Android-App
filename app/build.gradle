@@ -42,12 +42,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField 'String', 'BASE_URL', '"PRODUCTION_SERVER_URL"'
+            buildConfigField 'String', 'BASE_URL', '"http://api.vietnam.dcp.smartforum.org/"'
 
         }
         debug {
             testCoverageEnabled true
-            buildConfigField 'String', 'BASE_URL', '"STAGGING_SERVER_URL"'
+            buildConfigField 'String', 'BASE_URL', '"http://api.vietnam.dcp.smartforum.org/"'
         }
     }
     compileOptions {
@@ -78,8 +78,9 @@ dependencies {
     // do not update to 1.0.0
     implementation "android.arch.navigation:navigation-ui:$nav_version"
 
-    // Barcode
-    implementation 'me.dm7.barcodescanner:zxing:1.9.13'
+    /** ZXING SCAN LIBRARY **/
+    implementation('com.journeyapps:zxing-android-embedded:3.6.0') { transitive = false } // do not update
+    implementation 'com.google.zxing:core:3.3.3' // do not update
 
     //ButterKnife
     implementation 'com.jakewharton:butterknife:10.1.0'
