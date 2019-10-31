@@ -13,61 +13,55 @@
   -->
 
 <resources>
-    <string name="app_name">DCP Vietnam</string>
-
+    <string name="app_name">DCP</string>
     <string name="imei">ID thiết bị</string>
     <string name="marketing_name">Tên tiếp thị</string>
     <string name="internal_model_name">Tên mẫu nội bộ</string>
-    <string name="manufacturer">nhà chế tạo</string>
+    <string name="manufacturer">Nhà chế tạo</string>
     <string name="allocation_date">Ngày phê duyệt TAC</string>
     <string name="country_code">Mã quốc gia</string>
     <string name="fixed_code">Mã cố định</string>
     <string name="manufacturer_code">Mã nhà sản xuất</string>
     <string name="radio_interface">Giao diện vô tuyến</string>
-    <string name="brand_name">Giao diện vô tuyến</string>
+    <string name="brand_name">Tên thương hiệu</string>
     <string name="model_name">Tên người mẫu</string>
     <string name="operating_system">Hệ điều hành</string>
     <string name="nfc">Hỗ trợ NFC</string>
     <string name="bluetooth">Hỗ trợ Bluetooth</string>
     <string name="wlan">Hỗ trợ mạng WLAN</string>
     <string name="device_type">Loại thiết bị</string>
-
     <string name="title_activity_login">Đăng nhập</string>
-
-
-    <!--text to display on Volley error response-->
-
-    <string name="error_server_error">Vấn đề kết nối với máy chủ. Vui lòng cập nhật ứng dụng của bạn nếu bạn đang sử dụng một phiên bản cũ hơn.</string>
-    <string name="error_network_error">Không có lỗi kết nối. Vui lòng kiểm tra kết nối internet của bạn và thử lại.</string>
+    <string name="error_server_error">Xin lỗi, có lỗi xảy ra. Hãy thử lại một chút sau.</string>
+    <string name="error_network_error">Không có kết nối Internet! Vui lòng bật wifi hoặc dữ liệu di động và thử lại.</string>
     <string name="logout">Đăng xuất</string>
-    <string name="enter_digit_imei">Nhập IMEI ví dụ: 123456789012345</string>
+    <string name="enter_digit_imei">Nhập IMEI, ví dụ: 123456789012345</string>
     <string name="check">Kiểm tra</string>
-    <string name="imei_must_be_number">IMEI Phải chỉ chứa số.</string>
-    <string name="fifteen_digit_imei">Vui lòng nhập 15 chữ số IMEI.</string>
-    <string name="sure_to_logout">Bạn có chắc chắn muốn đăng xuất?</string>
-    <string name="yes">Vâng</string>
+    <string name="imei_must_be_number">IMEI must only contain numbers</string>
+    <string name="fifteen_digit_imei">Vui lòng nhập IMEI 14 chữ số16</string>
+    <string name="sure_to_logout">Are you sure you want to logout?</string>
+    <string name="yes">Đúng</string>
     <string name="no">Không</string>
-    <string name="ok">được</string>
-    <string name="scan_result">Quét kết quả</string>
-    <string name="username">Thư điện tử</string>
+    <string name="ok">đồng ý</string>
+    <string name="scan_result">Kết quả quét</string>
+    <string name="username">E-mail</string>
     <string name="password">Mật khẩu</string>
-    <string name="authenticating">Xác thực …</string>
-    <string name="select_image">Chọn ảnh</string>
-    <string name="email_invalid">Thư điện tử không hợp lệ!</string>
-    <string name="cancel">Hủy</string>
-    <string name="enter_device_name">Nhập tên thiết bị</string>
-    <string name="enter_device_model">Nhập Số Mô hình Thiết bị</string>
+    <string name="authenticating">Chứng thực</string>
+    <string name="email_invalid">Email không hợp lệ!</string>
+    <string name="can_not_empty">Không thể để trống!</string>
+    <string name="select_image">Chọn hình ảnh</string>
+    <string name="cancel">Hủy bỏ</string>
+    <string name="enter_device_name">Thương hiệu điện thoại di động</string>
+    <string name="enter_device_model">Tên người mẫu</string>
     <string name="description">Sự miêu tả</string>
-    <string name="submit">Đệ trình</string>
-    <string name="adding_device_info">Đang thêm thông tin thiết bị …</string>
-
+    <string name="submit">Gửi đi</string>
+    <string name="adding_device_info">Thêm thông tin thiết bị…</string>
     <string name="history">Lịch sử</string>
-    <string name="verify_scan">Xác minh Quét</string>
-    <string name="verify_scan_detail">Vui lòng xác minh số IMEI từ quá trình quét và nhấn được để tiếp tục</string>
+    <string name="verify_scan">Xác minh quét</string>
+    <string name="verify_scan_detail">Vui lòng xác minh số IMEI từ quá trình quét và nhấn OK để tiếp tục</string>
     <string name="checking">Kiểm tra</string>
-    <string name="device_not_found">Không tìm thấy thiết bị!</string>
+    <string name="device_not_found">Không tìm thấy IMEI!</string>
     <string name="no_internet">Không có mạng!</string>
-    <string name="yes_enable">Vâng, cho phép nó!</string>
+    <string name="yes_enable">Vâng, kích hoạt nó!</string>
     <string name="instruction_detail">
         <![CDATA[
 <html>
@@ -79,87 +73,85 @@
 ]]>
 
 </string>
+
+    <string name="about_detail"><![CDATA["        <html>          <head></head>          <body style="text-align:justify;color:#444;background-color: #00000000;">            Nền tảng đặc tính thiết bị (DCP) là một nền tảng để người dùng được ủy quyền phân loại thiết bị dựa trên IMEI của họ bằng cách truy vấn cơ sở dữ liệu IMEI của GSMA. Nó tìm nạp thông tin liên quan đến IMEI từ cơ sở dữ liệu và hiển thị cho người dùng. Nó cung cấp tùy chọn cho người dùng báo cáo thiết bị giả nếu phần TAC của IMEI không được GSMA chấp thuận hoặc các đặc điểm được truy xuất từ ​​cơ sở dữ liệu không khớp với thiết bị vật lý.  số bản dựng: …  phiên bản: …  trang mạng: … bản quyền …  Có gì mới trong phiên bản? Điều khoản sử dụng và chính sách quyền riêng tư?          </body>         </html>"]]></string>
+
     <string name="instructions">Hướng dẫn</string>
     <string name="session_expired">Phiên hết hạn!</string>
-    <string name="session_expired_detail">Phiên của bạn đã hết hạn. Vui lòng đăng nhập lại để tiếp tục sử dụng DCP</string>
-
+    <string name="session_expired_detail">Phiên của bạn đã hết hạn. Vui lòng đăng nhập lại để tiếp tục sử dụng DCP.</string>
     <string name="type_imei">Nhập IMEI</string>
     <string name="scan_imei">Quét IMEI</string>
-
-
-    <string name="password_should_be_min_six">Vui lòng tạo một mật khẩu mạnh (Mật khẩu phải chứa ít nhất một chữ in hoa / chữ thường, một số và một ký tự đặc biệt)</string>
+    <string name="password_should_be_min_six">Phải có ít nhất 6 ký tự</string>
     <string name="forgot_password">Quên mật khẩu?</string>
     <string name="reset_password">Đặt lại mật khẩu</string>
-    <string name="verifying">Xác minh</string>
-    <string name="reset_email_sent">Email đặt lại đã được gửi! Vui lòng kiểm tra email của bạn.</string>
-    <string name="please_enter_password_to_reset">Vui lòng nhập địa chỉ email của bạn để đặt lại mật khẩu</string>
+    <string name="verifying">Đang xác minh</string>
+    <string name="reset_email_sent">Một email thiết lập lại đã được gửi! Vui lòng kiểm tra email của bạn.</string>
+    <string name="please_enter_password_to_reset">Vui lòng nhập địa chỉ email của bạn để đặt lại mật khẩu của bạn</string>
     <string name="no_records_found">Không có dữ liệu được tìm thấy!</string>
-    <string name="report_device">Thiết bị báo cáo</string>
-    <string name="reported">Đã báo cáo</string>
-    <string name="can_not_empty">không được để trống!</string>
-    <string name="device_notfound_details"> không tìm thấy trong cơ sở dữ liệu. Thiết bị của bạn không hợp pháp; do đó thiết bị của bạn có thể là hàng giả mạo. Liên hệ với nhà cung cấp của bạn để được hỗ trợ.</string>
+    <string name="report_device">Báo cáo điện thoại di động</string>
+    <string name="reported">Báo cáo</string>
+    <string name="device_notfound_details"> không tìm thấy trong cơ sở dữ liệu. Thiết bị này có thể là hàng giả hoặc bất hợp pháp. Vui lòng báo cáo thiết bị này qua DCP!\n\nĐể điền vào biểu mẫu nhấn Báo cáo Điện thoại di động.</string>
     <string name="device_images">Hình ảnh thiết bị</string>
-    <!--<string name="license"><![CDATA[-->
-<!--<html>-->
- <!--<head></head>-->
- <!--<body style="text-align:justify;color:#444444;background-color: #00000000;">-->
-           <!--<h2>Sample End-User License Agreement ("Agreement")</h2>-->
-                        <!--<p>Last updated: 06 December, 2017</p>-->
-                        <!--<p>Please read this End-User License Agreement ("Agreement") carefully before clicking the "I Agree" button, downloading or using Device Verification System ("Application").</p>-->
+    <!--<string name="license">-->
+    <!--&lt;html&gt;-->
+    <!--&lt;head&gt;&lt;/head&gt;-->
+    <!--&lt;body style=&quot;text-align:justify;color:#444444;background-color: #00000000;&quot;&gt;-->
+    <!--&lt;h2&gt;Sample End-User License Agreement (&quot;Agreement&quot;)&lt;/h2&gt;-->
+    <!--&lt;p&gt;Last updated: 06 December, 2017&lt;/p&gt;-->
+    <!--&lt;p&gt;Please read this End-User License Agreement (&quot;Agreement&quot;) carefully before clicking the &quot;I Agree&quot; button, downloading or using Device Verification System (&quot;Application&quot;).&lt;/p&gt;-->
 
-                        <!--<p>By clicking the "I Agree" button, downloading or using the Application, you are agreeing to be bound by the terms and conditions of this Agreement.</p>-->
+    <!--&lt;p&gt;By clicking the &quot;I Agree&quot; button, downloading or using the Application, you are agreeing to be bound by the terms and conditions of this Agreement.&lt;/p&gt;-->
 
-                        <!--<p> If you do not agree to the terms of this Agreement, do not click on the "I Agree" button and do not download or use the Application.</p>-->
+    <!--&lt;p&gt; If you do not agree to the terms of this Agreement, do not click on the &quot;I Agree&quot; button and do not download or use the Application.&lt;/p&gt;-->
 
-                          <!--<h3>License</h3>-->
+    <!--&lt;h3&gt;License&lt;/h3&gt;-->
 
-                        <!--<p> Qualcomm/CACF grants you a revocable, non-exclusive, non-transferable, limited license to download, install and use the Application solely for your personal, non-commercial purposes strictly in accordance with the terms of this Agreement.</p>-->
+    <!--&lt;p&gt; Qualcomm/CACF grants you a revocable, non-exclusive, non-transferable, limited license to download, install and use the Application solely for your personal, non-commercial purposes strictly in accordance with the terms of this Agreement.&lt;/p&gt;-->
 
-                           <!--<h3> Restrictions</h3>-->
+    <!--&lt;h3&gt; Restrictions&lt;/h3&gt;-->
 
-                        <!--<p> You agree not to, and you will not permit others to:</p>-->
+    <!--&lt;p&gt; You agree not to, and you will not permit others to:&lt;/p&gt;-->
 
 
-                                    <!--<p>-->
-                                        <!--a) license, sell, rent, lease, assign, distribute, transmit, host, outsource, disclose or otherwise commercially exploit the Application or make the Application available to any third party.-->
-                                    <!--</p>-->
+    <!--&lt;p&gt;-->
+    <!--a) license, sell, rent, lease, assign, distribute, transmit, host, outsource, disclose or otherwise commercially exploit the Application or make the Application available to any third party.-->
+    <!--&lt;/p&gt;-->
 
-                                    <!--<h4>  Modifications to Application</h4>-->
-                                    <!--<p>Qualcomm/CACF reserves the right to modify, suspend or discontinue, temporarily or permanently, the Application or any service to which it connects, with or without notice and without liability to you.</p>-->
+    <!--&lt;h4&gt;  Modifications to Application&lt;/h4&gt;-->
+    <!--&lt;p&gt;Qualcomm/CACF reserves the right to modify, suspend or discontinue, temporarily or permanently, the Application or any service to which it connects, with or without notice and without liability to you.&lt;/p&gt;-->
 
-                                    <!--<h4> Term and Termination</h4>-->
-                                    <!--<p>This Agreement shall remain in effect until terminated by you or Qualcomm/CACF</p>-->
-                                    <!--<p>-->
-                                        <!--Qualcomm/CACF may, in its sole discretion, at any time and for any or no reason, suspend or terminate this Agreement with or without prior notice</p>-->
-                                    <!--<p>This Agreement will terminate immediately, without prior notice from Qualcomm/CACF, in the event that you fail to comply with any provision of this Agreement. You may also terminate this Agreement by deleting the Application and all copies thereof from your mobile device or from your desktop.</p>-->
-                                    <!--<p>Upon termination of this Agreement, you shall cease all use of the Application and delete all copies of the Application from your mobile device or from your desktop.</p>-->
+    <!--&lt;h4&gt; Term and Termination&lt;/h4&gt;-->
+    <!--&lt;p&gt;This Agreement shall remain in effect until terminated by you or Qualcomm/CACF&lt;/p&gt;-->
+    <!--&lt;p&gt;-->
+    <!--Qualcomm/CACF may, in its sole discretion, at any time and for any or no reason, suspend or terminate this Agreement with or without prior notice&lt;/p&gt;-->
+    <!--&lt;p&gt;This Agreement will terminate immediately, without prior notice from Qualcomm/CACF, in the event that you fail to comply with any provision of this Agreement. You may also terminate this Agreement by deleting the Application and all copies thereof from your mobile device or from your desktop.&lt;/p&gt;-->
+    <!--&lt;p&gt;Upon termination of this Agreement, you shall cease all use of the Application and delete all copies of the Application from your mobile device or from your desktop.&lt;/p&gt;-->
 
-                                    <!--<h4>Severability</h4>-->
-                                    <!--<p>If any provision of this Agreement is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.</p>-->
+    <!--&lt;h4&gt;Severability&lt;/h4&gt;-->
+    <!--&lt;p&gt;If any provision of this Agreement is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.&lt;/p&gt;-->
 
-                                    <!--<h4>Amendments to this Agreement-->
-                                    <!--</h4>-->
-                                    <!--<p>Qualcomm/CACF reserves the right, at its sole discretion, to modify or replace this Agreement at any time. If a revision is material we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>-->
+    <!--&lt;h4&gt;Amendments to this Agreement-->
+    <!--&lt;/h4&gt;-->
+    <!--&lt;p&gt;Qualcomm/CACF reserves the right, at its sole discretion, to modify or replace this Agreement at any time. If a revision is material we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.&lt;/p&gt;-->
 
-                                    <!--<p>If you have any questions about this Agreement, please contact us.</p>-->
- <!--</body>-->
-<!--</html>-->
-<!--]]></string>-->
-    <string name="i_accept">Tôi chấp nhận</string>
+    <!--&lt;p&gt;If you have any questions about this Agreement, please contact us.&lt;/p&gt;-->
+    <!--&lt;/body&gt;-->
+    <!--&lt;/html&gt;-->
+    <!--</string>-->
+    <string name="i_accept">Tôi đồng ý</string>
     <string name="continue_txt">Tiếp tục</string>
-    <string name="verify_input">Xác minh đầu vào</string>
-    <string name="verify_input_detail">Vui lòng xác minh số IMEI bạn đã nhập. Nhấn được để tiếp tục hoặc HỦY BỎ để nhập lại</string>
+    <string name="verify_input">Xác nhận đầu vào</string>
+    <string name="verify_input_detail">Vui lòng xác minh số IMEI bạn đã nhập. Nhấn OK để tiếp tục hoặc CANCEL để nhập lại</string>
     <string name="store_name">Tên cửa hàng</string>
     <string name="address">Địa chỉ nhà</string>
-
-    <string name="report_mismatch_description">Trường dữ liệu có khớp với thiết bị không?</string>
+    <string name="report_mismatch_description">Trường ghi có khớp với thiết bị không?</string>
     <string name="no_report">Không có báo cáo</string>
-    <string name="device_status_updated">Đã cập nhật thành công thiết bị</string>
+    <string name="device_status_updated">Tình trạng thiết bị được cập nhật thành công</string>
     <string name="feedback_sent">Phản hồi đã gửi.</string>
     <string name="updating_device_status">Đang cập nhật trạng thái thiết bị</string>
-    <string name="please_report_device_to_close">Hãy báo cáo thiết bị để đóng!</string>
+    <string name="please_report_device_to_close">Vui lòng báo cáo thiết bị để đóng!</string>
     <string name="scan_help_text">Vui lòng đặt mã vạch bên trong hộp.</string>
-    <string name="complete_name">Tên đầy đủ</string>
+    <string name="complete_name">Họ và tên</string>
     <string name="device_certification_body">Thiết bị xác nhận thân máy</string>
     <string name="sim_support">Hỗ trợ SIM</string>
     <string name="lpwan">LPWAN</string>
@@ -171,15 +163,14 @@
     <string name="addressInfo">Nhập địa chỉ hợp lệ nơi đặt thiết bị.</string>
     <string name="desInfo">Thêm mô tả cho thiết bị của bạn.</string>
     <string name="imagesInfo">Tải lên hình ảnh hợp lệ của thiết bị.</string>
-    <string name="oops">Rất tiếc …</string>
+    <string name="oops">Úi…</string>
     <string name="feedback">Phản hồi</string>
-    <string name="send_feedback">Gửi phản hồi</string>
+    <string name="send_feedback">Gửi thông tin phản hồi</string>
     <string name="submit_feedback">Gửi phản hồi</string>
-    <string name="home">Nhà</string>
+    <string name="home">Trang Chủ</string>
     <string name="submitting_feedback">Gửi phản hồi</string>
     <string name="search">Tìm kiếm IMEI</string>
     <string name="about">Trong khoảng</string>
-    <string name="about_detail"><![CDATA["        <html>          <head></head>          <body style="text-align:justify;color:#444;background-color: #00000000;">            Nền tảng đặc tính thiết bị (DCP) là một nền tảng để người dùng được ủy quyền phân loại thiết bị dựa trên IMEI của họ bằng cách truy vấn cơ sở dữ liệu IMEI của GSMA. Nó tìm nạp thông tin liên quan đến IMEI từ cơ sở dữ liệu và hiển thị cho người dùng. Nó cung cấp tùy chọn cho người dùng báo cáo thiết bị giả nếu phần TAC của IMEI không được GSMA chấp thuận hoặc các đặc điểm được truy xuất từ ​​cơ sở dữ liệu không khớp với thiết bị vật lý.  số bản dựng: …  phiên bản: …  trang mạng: … bản quyền …  Có gì mới trong phiên bản? Điều khoản sử dụng và chính sách quyền riêng tư?          </body>         </html>"]]></string>
     <string name="feedback_hint">Nhập phản hồi của bạn ở đây.</string>
     <string name="successful">Thành công</string>
     <string name="dcp">Nền tảng đặc tính thiết bị</string>
