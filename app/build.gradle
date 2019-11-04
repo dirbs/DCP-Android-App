@@ -42,12 +42,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField 'String', 'BASE_URL', '"http://api.vietnam.dcp.smartforum.org/"'
+            buildConfigField 'String', 'BASE_URL', '"PRODUCTION_SERVER_URL"'
 
         }
         debug {
             testCoverageEnabled true
-            buildConfigField 'String', 'BASE_URL', '"http://api.vietnam.dcp.smartforum.org/"'
+            buildConfigField 'String', 'BASE_URL', '"PRODUCTION_SERVER_URL"'
         }
     }
     compileOptions {
