@@ -388,6 +388,9 @@ public class ScannerFragment extends Fragment implements VerifyImeiInterface {
     // Invoked by presenter to handle failure response by api
     @Override
     public void displayError(Throwable throwable) {
+        if (mProgressDialog.isShowing())
+            mProgressDialog.dismiss();
+        barcodeView.resume();
         Utils.showNetworkError(getActivity(), throwable);
     }
 }
