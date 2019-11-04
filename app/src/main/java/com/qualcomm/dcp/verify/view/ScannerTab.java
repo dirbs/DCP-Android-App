@@ -61,6 +61,7 @@ public class ScannerTab extends Fragment {
     }
 
     public void permissionCallback(FragmentManager fragmentManager) {
+        mScannerFragment = new ScannerFragment();
         fragmentManager.beginTransaction().replace(R.id.root_frame, mScannerFragment).commit();
     }
 

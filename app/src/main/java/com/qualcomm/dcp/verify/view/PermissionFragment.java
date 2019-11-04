@@ -34,6 +34,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.qualcomm.dcp.R;
+import com.qualcomm.dcp.utils.MyPreferences;
 
 import java.util.Objects;
 
@@ -95,10 +96,12 @@ public class PermissionFragment extends Fragment implements View.OnClickListener
 
     private void checkCameraPermission() {
 
+        MyPreferences myPreferences = new MyPreferences(getActivity());
+
         if (ActivityCompat.checkSelfPermission(Objects.requireNonNull(getActivity()), Manifest.permission.CAMERA) !=
                 PackageManager.PERMISSION_GRANTED) {
             // Should we show an explanation?
-            if (!shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
+            if (!shouldShowRequestPermissionRationale(Manifest.permission.CAMERA) && myPreferences.getBoolean("camera_asked", false)) {
 
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
@@ -135,6 +138,7 @@ public class PermissionFragment extends Fragment implements View.OnClickListener
                 mScannerTab.permissionCallback(mFragmentManager);
             }
         }
+        myPreferences.setBoolean("camera_asked", true);
     }
 
     @Override
