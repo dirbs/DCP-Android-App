@@ -23,9 +23,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.rule.GrantPermissionRule;
 
-import com.google.android.gms.vision.barcode.Barcode;
 import com.google.gson.Gson;
-import com.google.zxing.Result;
 import com.ontbee.legacyforks.cn.pedant.SweetAlert.SweetAlertDialog;
 import com.qualcomm.dcp.utils.Constants;
 import com.qualcomm.dcp.utils.UserSessionManager;
@@ -54,6 +52,7 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withTagValue;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static com.qualcomm.dcp.Utils.hasTextInputLayoutErrorText;
 
 // Unit tests for scanner fragment
@@ -120,8 +119,8 @@ public class ScannerFragmentTests {
     // For showing loading
     private void displayLoading(ScannerFragment scanImeiFragment) {
         scanImeiFragment.mProgressDialog = new SweetAlertDialog(Objects.requireNonNull(scanImeiFragment.getActivity()), SweetAlertDialog.PROGRESS_TYPE);
-        scanImeiFragment.mProgressDialog.getProgressHelper().setBarColor(scanImeiFragment.getResources().getColor(com.qualcomm.dcp.R.color.loading));
-        scanImeiFragment.mProgressDialog.setTitleText(scanImeiFragment.getActivity().getResources().getString(com.qualcomm.dcp.R.string.checking));
+        scanImeiFragment.mProgressDialog.getProgressHelper().setBarColor(scanImeiFragment.getResources().getColor(R.color.loading));
+        scanImeiFragment.mProgressDialog.setTitleText(scanImeiFragment.getActivity().getResources().getString(R.string.checking));
         scanImeiFragment.mProgressDialog.setCancelable(false);
         scanImeiFragment.mProgressDialog.show();
     }
@@ -140,10 +139,9 @@ public class ScannerFragmentTests {
         List<Fragment> fragmentList = homeFragment.getChildFragmentManager().getFragments();
         ScannerFragment scanner = (ScannerFragment) fragmentList.get(2);
 
-        Result result = new Result("",null,null,null);
-        scanner.handleResult(result);
+        mStartActivityTestRule.getActivity().runOnUiThread(() -> scanner.handleResult(imei));
         InstrumentationRegistry.getInstrumentation().waitForIdleSync();
-        onView(ViewMatchers.withId(com.qualcomm.dcp.R.id.scan_result_et)).perform(typeText(imei), closeSoftKeyboard());
+        onView(ViewMatchers.withId(R.id.scan_result_et)).perform(typeText(imei), closeSoftKeyboard());
         final androidx.appcompat.app.AlertDialog dialog = scanner.getScanDialog();
         if (dialog.isShowing()) {
             onView(withId(android.R.id.button1)).perform(click());
@@ -163,14 +161,15 @@ public class ScannerFragmentTests {
         HomeFragment homeFragment = mainNavActivity.homeFragment;
         List<Fragment> fragmentList = homeFragment.getChildFragmentManager().getFragments();
         ScannerFragment scanner = (ScannerFragment) fragmentList.get(2);
-
-        Result result = new Result("",null,null,null);
-        scanner.handleResult(result);
         InstrumentationRegistry.getInstrumentation().waitForIdleSync();
-        onView(ViewMatchers.withId(com.qualcomm.dcp.R.id.scan_result_et)).perform(typeText(imei), closeSoftKeyboard());
+
+        mStartActivityTestRule.getActivity().runOnUiThread(() -> scanner.handleResult(imei));
+        InstrumentationRegistry.getInstrumentation().waitForIdleSync();
+        onView(ViewMatchers.withId(R.id.scan_result_et)).perform(typeText(imei), closeSoftKeyboard());
         final androidx.appcompat.app.AlertDialog dialog = scanner.getScanDialog();
+
         if (dialog.isShowing()) {
-            onView(withId(android.R.id.button1)).perform(click());
+            onView(withText(R.string.ok)).perform(click());
             InstrumentationRegistry.getInstrumentation().waitForIdleSync();
         }
     }
@@ -189,15 +188,15 @@ public class ScannerFragmentTests {
         List<Fragment> fragmentList = homeFragment.getChildFragmentManager().getFragments();
         ScannerFragment scanner = (ScannerFragment) fragmentList.get(2);
 
-        Result result = new Result("",null,null,null);
-        scanner.handleResult(result);
+        mStartActivityTestRule.getActivity().runOnUiThread(() -> scanner.handleResult(imei));
         InstrumentationRegistry.getInstrumentation().waitForIdleSync();
-        onView(ViewMatchers.withId(com.qualcomm.dcp.R.id.scan_result_et)).perform(typeText(imei), closeSoftKeyboard());
+        onView(ViewMatchers.withId(R.id.scan_result_et)).perform(typeText(imei), closeSoftKeyboard());
         final androidx.appcompat.app.AlertDialog dialog = scanner.getScanDialog();
         if (dialog.isShowing()) {
             onView(withId(android.R.id.button1)).perform(click());
         }
     }
+
 
     // Unit test for manual input of valid imei in counter fiet
     @Test
@@ -213,11 +212,10 @@ public class ScannerFragmentTests {
         List<Fragment> fragmentList = homeFragment.getChildFragmentManager().getFragments();
         ScannerFragment scanner = (ScannerFragment) fragmentList.get(2);
 
-        Result result = new Result("",null,null,null);
-        scanner.handleResult(result);
+        mStartActivityTestRule.getActivity().runOnUiThread(() -> scanner.handleResult(imei));
         InstrumentationRegistry.getInstrumentation().waitForIdleSync();
-        onView(ViewMatchers.withId(com.qualcomm.dcp.R.id.scan_result_et)).perform(typeText(imei), closeSoftKeyboard());
-        onView(ViewMatchers.withId(com.qualcomm.dcp.R.id.scan_result_til)).check(matches(hasTextInputLayoutErrorText(null)));
+        onView(ViewMatchers.withId(R.id.scan_result_et)).perform(typeText(imei), closeSoftKeyboard());
+        onView(ViewMatchers.withId(R.id.scan_result_til)).check(matches(hasTextInputLayoutErrorText(null)));
     }
 
     // Unit test for success imei response for counter fiet
@@ -294,10 +292,9 @@ public class ScannerFragmentTests {
         List<Fragment> fragmentList = homeFragment.getChildFragmentManager().getFragments();
         ScannerFragment scanner = (ScannerFragment) fragmentList.get(2);
 
-        Result result = new Result("",null,null,null);
-        scanner.handleResult(result);
+        mStartActivityTestRule.getActivity().runOnUiThread(() -> scanner.handleResult(imei));
         InstrumentationRegistry.getInstrumentation().waitForIdleSync();
-        onView(ViewMatchers.withId(com.qualcomm.dcp.R.id.scan_result_et)).perform(typeText(imei), closeSoftKeyboard());
+        onView(ViewMatchers.withId(R.id.scan_result_et)).perform(typeText(imei), closeSoftKeyboard());
         mMockServerRule.server().setDispatcher(getDispatcherOk());
         final androidx.appcompat.app.AlertDialog dialog = scanner.getScanDialog();
         if (dialog.isShowing()) {
@@ -317,15 +314,5 @@ public class ScannerFragmentTests {
                 throw new IllegalStateException("no mock set up for " + request.getPath());
             }
         };
-    }
-
-    // Unit test unauthorized imei call
-    @Test
-    public void testImeiCallUnauthorized() {
-
-        Barcode barcode = new Barcode();
-        barcode.displayValue = "";
-        InstrumentationRegistry.getInstrumentation().waitForIdleSync();
-        onView(withTagValue(Matchers.is("SCAN_TAB"))).perform(click());
     }
 }

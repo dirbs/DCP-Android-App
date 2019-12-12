@@ -15,7 +15,6 @@ package com.qualcomm.dcp.license.view;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -70,7 +69,6 @@ public class LicenseAgreementActivity extends AppCompatActivity implements View.
 
         mMyPreferences = new MyPreferences(this);
         Log.e("license", "locale = " + mMyPreferences.getString("locale", "en"));
-        Utils.changeLanguageLocale(getBaseContext(), mMyPreferences.getString("locale", "en"));
         if (mMyPreferences.getString("locale", "en").equals("vi") && !mMyPreferences.getBoolean("isRecreated", false)) {
             mMyPreferences.setBoolean("isRecreated", true);
             this.recreate();
@@ -90,13 +88,13 @@ public class LicenseAgreementActivity extends AppCompatActivity implements View.
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N_MR1) {
+//        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N_MR1) {
             MyPreferences myPreferences = new MyPreferences(newBase);
             super.attachBaseContext(ContextWrapper.wrap(newBase, myPreferences.getString("locale", "en")));
-        }
-        else {
-            super.attachBaseContext(newBase);
-        }
+//        }
+//        else {
+//            super.attachBaseContext(newBase);
+//        }
     }
 
     // Upon closing of this activity views are unbidden and presenter is detached

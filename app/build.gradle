@@ -47,7 +47,7 @@ android {
         }
         debug {
             testCoverageEnabled true
-            buildConfigField 'String', 'BASE_URL', '"STAGGING_SERVER_URL"'
+            buildConfigField 'String', 'BASE_URL', '"PRODUCTION_SERVER_URL"'
         }
     }
     compileOptions {
@@ -78,8 +78,9 @@ dependencies {
     // do not update to 1.0.0
     implementation "android.arch.navigation:navigation-ui:$nav_version"
 
-    // Barcode
-    implementation 'me.dm7.barcodescanner:zxing:1.9.13'
+    /** ZXING SCAN LIBRARY **/
+    implementation('com.journeyapps:zxing-android-embedded:3.6.0') { transitive = false } // do not update
+    implementation 'com.google.zxing:core:3.3.3' // do not update
 
     //ButterKnife
     implementation 'com.jakewharton:butterknife:10.1.0'
@@ -94,7 +95,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.1'
 
-    androidTestImplementation 'com.squareup.okhttp3:mockwebserver:3.13.1'
+    androidTestImplementation 'com.squareup.okhttp3:mockwebserver:3.12.3' // do not update to 3.13.. not compatible with lower api min sdk 21
 
     // Core library
     androidTestImplementation 'androidx.test:core:1.2.0'

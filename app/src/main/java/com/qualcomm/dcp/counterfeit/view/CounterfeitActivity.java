@@ -168,13 +168,13 @@ public class CounterfeitActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N_MR1) {
+//        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N_MR1) {
             MyPreferences myPreferences = new MyPreferences(newBase);
             super.attachBaseContext(ContextWrapper.wrap(newBase, myPreferences.getString("locale", "en")));
-        }
-        else {
-            super.attachBaseContext(newBase);
-        }
+//        }
+//        else {
+//            super.attachBaseContext(newBase);
+//        }
     }
 
     // Invoked upon closing of this activity. View is unbinded from presenter and xml objects
@@ -256,11 +256,13 @@ public class CounterfeitActivity extends AppCompatActivity implements View.OnCli
     // Checking if necessary permissions are granted or not
     public void checkForPermission() {
 
+        MyPreferences myPreferences = new MyPreferences(this);
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
                 PackageManager.PERMISSION_GRANTED) {
             // Should we show an explanation?
             if (!ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE) && myPreferences.getBoolean("storage_asked", false)) {
 
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
@@ -296,6 +298,7 @@ public class CounterfeitActivity extends AppCompatActivity implements View.OnCli
         } else {
             pickImages();
         }
+        myPreferences.setBoolean("storage_asked", true);
     }
 
     // Handling permission grant requests result

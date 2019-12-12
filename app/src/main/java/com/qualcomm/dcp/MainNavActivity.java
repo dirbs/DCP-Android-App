@@ -16,7 +16,6 @@ package com.qualcomm.dcp;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -85,13 +84,13 @@ public class MainNavActivity extends AppCompatActivity implements NavigationView
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N_MR1) {
+//        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N_MR1) {
             MyPreferences myPreferences = new MyPreferences(newBase);
             super.attachBaseContext(ContextWrapper.wrap(newBase, myPreferences.getString("locale", "en")));
-        }
-        else {
-            super.attachBaseContext(newBase);
-        }
+//        }
+//        else {
+//            super.attachBaseContext(newBase);
+//        }
     }
 
     // Setting Up One Time Navigation

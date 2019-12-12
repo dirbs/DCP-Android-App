@@ -24,6 +24,7 @@
     <color name="text_color_dark">#424242</color>
     <color name="white_trans">#5affffff</color>
 
+    <color name="transparent">#00000000</color>
     <color name="white">#FFFFFF</color>
     <color name="colorTextBackground">#f5f5f5</color>
     <color name="loading">#1B5E20</color>

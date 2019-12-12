@@ -31,6 +31,8 @@ import java.util.Objects;
 
 public class ScannerTab extends Fragment {
 
+    private ScannerFragment mScannerFragment;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,11 +46,13 @@ public class ScannerTab extends Fragment {
          * "real" fragment
          */
 
+        mScannerFragment = new ScannerFragment();
+
         if (ActivityCompat.checkSelfPermission(Objects.requireNonNull(getActivity()), Manifest.permission.CAMERA) !=
                 PackageManager.PERMISSION_GRANTED) {
             mFragmentTransaction.replace(R.id.root_frame, new PermissionFragment(getFragmentManager()));
         } else {
-            mFragmentTransaction.replace(R.id.root_frame, new ScannerFragment());
+            mFragmentTransaction.replace(R.id.root_frame, mScannerFragment);
         }
 
         mFragmentTransaction.commit();
@@ -57,6 +61,17 @@ public class ScannerTab extends Fragment {
     }
 
     public void permissionCallback(FragmentManager fragmentManager) {
-        fragmentManager.beginTransaction().replace(R.id.root_frame, new ScannerFragment()).commit();
+        mScannerFragment = new ScannerFragment();
+        fragmentManager.beginTransaction().replace(R.id.root_frame, mScannerFragment).commit();
+    }
+
+    public void stopScanner(boolean b) {
+        if (mScannerFragment != null)
+            mScannerFragment.stopScanner(b);
+    }
+
+    public void startScanner(boolean b) {
+        if (mScannerFragment != null)
+            mScannerFragment.startScanner(b);
     }
 }

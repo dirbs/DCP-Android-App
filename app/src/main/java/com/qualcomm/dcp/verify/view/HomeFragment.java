@@ -40,6 +40,7 @@ import java.util.Objects;
 public class HomeFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    private ScannerTab mScannerTab;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,6 +85,8 @@ public class HomeFragment extends Fragment {
         tab2_title.setText(getString(R.string.scan_imei));
         img2.setImageResource(R.drawable.ic_action_scanner);
 
+        mScannerTab = new ScannerTab();
+
         mListener.homeFragment(this);
 
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -97,6 +100,7 @@ public class HomeFragment extends Fragment {
                     //hide keyboard for second fragment
                     Snackbar.make(Objects.requireNonNull(getActivity()).findViewById(android.R.id.content), getResources().getString(R.string.scan_help_text), Snackbar.LENGTH_LONG)
                             .show();
+                    mScannerTab.startScanner(true);
                     try {
                         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                         if (imm != null && getActivity().getCurrentFocus() != null)
@@ -104,15 +108,17 @@ public class HomeFragment extends Fragment {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                } else {
+                    mScannerTab.stopScanner(false);
                 }
-            }
+        }
 
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        });
+        @Override
+        public void onPageScrollStateChanged ( int state){
+        }
+    });
         return v;
-    }
+}
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -131,50 +137,50 @@ public class HomeFragment extends Fragment {
         mListener = null;
     }
 
-    public interface OnFragmentInteractionListener {
+public interface OnFragmentInteractionListener {
 
-        void homeFragment(HomeFragment homeFragment);
+    void homeFragment(HomeFragment homeFragment);
+}
+
+/**
+ * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+ * one of the sections/tabs/pages.
+ */
+class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+    SectionsPagerAdapter(@NonNull FragmentManager fm) {
+        super(fm);
     }
 
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    class SectionsPagerAdapter extends FragmentPagerAdapter {
+    @NonNull
+    @Override
+    public androidx.fragment.app.Fragment getItem(int position) {
+        // getItem is called to instantiate the fragment for the given page.
+        // Return a PlaceholderFragment (defined as a static inner class below).
 
-        SectionsPagerAdapter(@NonNull FragmentManager fm) {
-            super(fm);
+        switch (position) {
+            case 0:
+                return new EnterImeiFragment();
+            case 1:
+                return mScannerTab;
         }
-
-        @NonNull
-        @Override
-        public androidx.fragment.app.Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-
-            switch (position) {
-                case 0:
-                    return new EnterImeiFragment();
-                case 1:
-                    return new ScannerTab();
-            }
-            return new EnterImeiFragment();
-        }
-
-        @Override
-        public int getCount() {
-            // Show 2 total pages.
-            return 2;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                case 1:
-                    return "";
-            }
-            return null;
-        }
+        return new EnterImeiFragment();
     }
+
+    @Override
+    public int getCount() {
+        // Show 2 total pages.
+        return 2;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        switch (position) {
+            case 0:
+            case 1:
+                return "";
+        }
+        return null;
+    }
+}
 }

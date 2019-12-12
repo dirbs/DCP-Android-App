@@ -50,6 +50,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:replace="android:icon,android:supportsRtl"
+        android:requestLegacyExternalStorage="true"
         tools:targetApi="m">
         <activity
             android:name="com.qualcomm.dcp.MainNavActivity"

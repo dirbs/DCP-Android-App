@@ -49,7 +49,6 @@
     <string name="can_not_empty">Can\'t be empty!</string>
     <string name="select_image">Select Images</string>
     <string name="cancel">Cancel</string>
-    <string name="grant_write_storage">Please grant write external storage permission to select image.</string>
     <string name="enter_device_name">Mobile Phone Brand</string>
     <string name="enter_device_model">Model Name</string>
     <string name="description">Description</string>
@@ -194,7 +193,6 @@ terms of use and privacy policy?
     <string name="camera_permission_needed">Camera permission needed for scanner.</string>
     <string name="permission_denied">Permission denied for camera.</string>
     <string name="flash_button">Flash Button</string>
-    <string name="focus_button">Focus Button</string>
 
     <string name="storage_permission_needed">Storage permission needed for selecting images.</string>
     <string name="storage_permission_denied">Permission denied for storage.</string>
